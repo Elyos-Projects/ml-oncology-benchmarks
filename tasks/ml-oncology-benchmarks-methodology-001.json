@@ -1,0 +1,36 @@
+{
+  "id": "ml-oncology-benchmarks-methodology-001",
+  "title": "Leakage-aware benchmark methodology specification (splits, preprocessing isolation, metrics, external-validation requirement, reporting template)",
+  "project": "ml-oncology-benchmarks",
+  "type": "design-spec",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer", "oncology", "machine-learning", "reproducibility", "data"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "ML results in oncology are widely over-optimistic because of data leakage: feature selection or normalization fit on the full dataset before cross-validation, sample-level splits that place multiple specimens from the same patient on both sides of a train/test boundary, batch/centre effects that let a model predict the lab instead of the biology, signatures trained and reported on the same cohort, duplicate samples across 'independent' cohorts, and survival models scored with metrics that ignore censoring. This specification is the cold-start contract every benchmark in the project must implement and be tested against, BEFORE any model is trained. The project uses ONLY open-access / aggregate / de-identified cancer data; controlled-access (dbGaP/EGA/biobanks) and any identifiable patient data are out of scope. No adopter/steward or domain reviewer is yet secured.",
+  "objective": "Write the authoritative leakage-aware benchmark methodology specification that all later harness code, audits, and benchmarks implement and are tested against: the patient/case-grouped split policy, the mandatory external-validation-cohort requirement, the preprocessing-isolation rules (fit on training folds only), the task-correct metric definitions (censoring-aware survival metrics; class-imbalance-aware subtyping metrics), the optimism-gap reporting, the (code, data, split) provenance-triple requirement, and the TRIPOD-AI-aligned reporting template.",
+  "acceptanceCriteria": [
+    "Mandates patient/case-grouped splitting as the default unit (no patient on both sides of any split) and a declared external validation cohort from a different study/centre for any headline number; internal cross-validation alone is never a published claim",
+    "Specifies preprocessing isolation: scaling, imputation, feature selection, PCA, normalization, and batch correction are all fit on training folds only, and defines how this is to be statically and at-runtime enforced by the leakage-audit suite",
+    "Defines task-correct metrics: survival = Harrell and Uno C-index, time-dependent AUC, integrated Brier score (censoring-aware); subtyping = balanced accuracy, macro-F1, AUROC/AUPRC, and calibration; explicitly rejects naive accuracy/AUC on censored survival data",
+    "Requires the optimism gap (internal-CV minus external-cohort performance) be reported for every benchmark, and a (code version, data version, split hash) provenance triple on every reported number",
+    "Adopts a TRIPOD-AI-aligned reporting template and states the 'research benchmark, not a clinical/diagnostic tool, not medical advice' framing carried by all artifacts",
+    "Defines the data-scope rule restated from the cancer guardrails: open-access / aggregate / de-identified sources only; controlled-access and identifiable data excluded by hard rule",
+    "Reviewed and signed off by the oncology data-science / biostatistics domain reviewer (recorded in the reviewers ledger)"
+  ],
+  "resources": [
+    "planning/projects/ml-oncology-benchmarks/PLAN.md",
+    "CLAUDE.md",
+    "docs/good-deed-definition.md",
+    "packages/schema/src/schemas.ts",
+    "planning/ROADMAP.md"
+  ],
+  "output": "A reviewed methodology-specification document (the leakage-aware benchmark charter) defining the split policy, external-validation requirement, preprocessing-isolation rules, task-correct metrics, optimism-gap and provenance-triple reporting, and the reporting template - the contract that ml-oncology-benchmarks-audit-004 (leakage-audit suite) and every benchmark definition implement and are verified against.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}
