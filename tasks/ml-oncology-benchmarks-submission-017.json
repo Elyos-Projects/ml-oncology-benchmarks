@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-submission-017",
+  "title": "Submission protocol + reproducibility re-run gate (accept only if numbers re-run in-tolerance and data is in-scope/gated)",
+  "project": "ml-oncology-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer", "oncology", "machine-learning", "software", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "To let external parties submit results against the benchmarks, a formal submission protocol is needed. The critical property is that a submission is only accepted if its reported numbers re-run within tolerance in the pinned environment AND its data passes the gate-002 checklist. A claimed score without a re-run-passing provenance is not listed. This closes the gap between self-reported performance claims and verifiable benchmark results, which is the project's core value proposition. The submission protocol must also run the leakage-audit suite on the submission's split and preprocessing plan.",
+  "objective": "Design and implement the submission protocol: define the submission artifact format (code, data provenance record, split membership, preprocessing plan, reported metrics), implement the re-run gate (re-runs the submission's pipeline in the pinned environment and accepts the submission only if numbers reproduce within the declared tolerance and data is in-scope/gated per gate-002), and implement the leakage-audit check on the submission's pipeline; rejected submissions receive a structured reason.",
+  "acceptanceCriteria": [
+    "A submission is accepted only if its data passed the gate-002 checklist (open/aggregate/de-id) AND its reported numbers re-run within the declared tolerance in the pinned environment; rejected submissions receive a structured rejection reason",
+    "Submissions must include their (code version, data version, split membership) provenance; the leakage-audit suite is run on the submission's split and preprocessing plan before acceptance",
+    "The submission artifact format is documented: code reference (URL + hash), data provenance record (gate-002 passage artifact), split-membership file, preprocessing plan, and reported metrics with provenance triples",
+    "The re-run gate is automated: given a submission artifact, it runs the pipeline in the pinned container, computes the metrics, and compares against the claimed values; the comparison is committed as a receipt",
+    "At least one test submission (a synthetic or internal reference run) is processed through the full protocol to demonstrate it works end-to-end",
+    "Technical reviewer and maintainer sign-offs on the submission protocol and re-run gate are recorded"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A merged PR delivering the submission protocol, submission artifact format documentation, and the automated reproducibility re-run gate with leakage-audit integration — the quality gate for all external submissions.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

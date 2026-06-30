@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-datasheet-005",
+  "title": "Triage one candidate open dataset through the gate + publish its datasheet",
+  "project": "ml-oncology-benchmarks",
+  "type": "data",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer", "oncology", "data", "reproducibility", "open-data"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Before any benchmark is defined or any model is trained, the project needs at least one candidate dataset proven to pass the licence + access-tier + de-identification gate and documented with a Datasheets-for-Datasets questionnaire. This is the first end-to-end exercise of the gate checklist (task 002) on a real candidate source — likely an open-tier TCGA-derived expression + de-identified clinical dataset via GDC or cBioPortal, or a GEO series. The gate decision record and datasheet become the reference artifacts demonstrating the gate works. No row-level or individually-identifiable data is committed; only metadata, provenance, and the gate decision record.",
+  "objective": "Select one candidate open-access / aggregate / de-identified cancer dataset (e.g. TCGA open-tier expression + clinical via GDC/cBioPortal, or a GEO series), triage it through the gate-002 checklist (record accessTier, licenceId/URL, permitsResearchReuse, permitsDerivedRedistribution, deidentification, attribution, and a committed licence snapshot), and publish its Datasheets-for-Datasets questionnaire recording motivation, composition, collection process, publisher de-identification, licence, batch/centre structure, and known biases.",
+  "acceptanceCriteria": [
+    "Dataset passes the gate-002 checklist with all required fields completed and a committed gate artifact: accessTier confirmed as open/aggregate/de-identified, licenceId and licenceUrl cited, permitsResearchReuse and permitsDerivedRedistribution both true, deidentification documented as publisher-documented, attribution string recorded, and licence snapshot (committed copy + SHA-256 + Wayback URL) committed",
+    "No controlled-access or individually-identifiable data is used or committed; if any field in the candidate dataset looks individually identifying or finer-grained than the publisher's stated aggregation it is flagged and excluded",
+    "A Datasheets-for-Datasets questionnaire is published covering: motivation, composition, collection process, publisher de-identification method, licence, batch/centre/platform structure, and known biases and limitations",
+    "No row-level data is committed; only metadata, provenance records, permitted derived feature descriptions, and the gate decision artifact",
+    "Licence+de-id reviewer sign-off is recorded in the gate artifact and the datasheet",
+    "The gate artifact and datasheet are committed in the repo alongside a human-readable summary of the dataset's suitability for benchmarking"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A committed gate decision record (completed gate-002 checklist) and a Datasheets-for-Datasets document for the first triaged open cancer dataset — proving the gate is functional and establishing the reference datasheet format for all subsequent datasets.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

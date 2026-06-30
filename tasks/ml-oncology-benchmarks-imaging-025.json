@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-imaging-025",
+  "title": "Open whole-slide pathology benchmark (open TCGA/CPTAC images only)",
+  "project": "ml-oncology-benchmarks",
+  "type": "data",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer", "oncology", "machine-learning", "data", "pathology"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "This is a deferred backlog task. Whole-slide pathology imaging benchmarks (e.g. using TCGA or CPTAC open-tier whole-slide images) have a large and complex licence + de-identification surface: images can contain rare artefacts that enable re-identification, institution markings, or slide-level metadata that links to controlled data. This task is only pursued if a clean open-licence path is confirmed (open-tier TCGA/CPTAC images with verified de-identification and open-access licence) and only after the genomics/proteomics benchmarks are stable. Deferred by design.",
+  "objective": "If and only if a clean open-licence path is confirmed (open-tier TCGA or CPTAC whole-slide images with verified de-identification, open-access licence, and no controlled-data entanglement), define and deliver a whole-slide pathology benchmark: gate all image sources, define a benchmark definition object with image featureSpec and either a subtyping or survival labelSpec, run the full leakage-audit suite (including image-specific checks for slide-level batch/staining confounds), and document the dataset in a datasheet.",
+  "acceptanceCriteria": [
+    "A clean open-licence path is confirmed before any work begins: open-tier TCGA or CPTAC whole-slide images with verified de-identification (no identifiable patient information in image metadata or slide markings), open-access licence, and no entanglement with controlled-tier data; if this confirmation is not secured the task is deferred or cancelled and that decision is recorded",
+    "All image sources pass the gate-002 checklist; per-source licence (open-access tier, de-identification method, redistribution permissions for derived features/metrics) is verified and committed",
+    "A benchmark definition object is created with image featureSpec (slide-level or tile-level features, preprocessing pipeline), appropriate labelSpec, patient-grouped splits, and a declared independent external cohort",
+    "Image-specific leakage checks are added to the audit suite: slide-level batch/staining confound detection, institution/scanner confound check, and any metadata leakage check; these pass in CI for the imaging benchmark",
+    "A datasheet is published covering image acquisition (scanner, staining protocol, institution), de-identification method, licence, known batch/staining/centre biases",
+    "Domain reviewer and licence+de-id reviewer sign-offs are recorded"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A committed whole-slide pathology benchmark definition object with gated open-licence image sources, patient-grouped splits with external cohort, image-specific leakage-audit passage in CI, and a datasheet — or a recorded deferral if no clean open-licence path is confirmed.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

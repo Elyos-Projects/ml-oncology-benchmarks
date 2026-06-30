@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-harness-016",
+  "title": "Refactor harness to run both task families from definition objects (shared audit/metric/provenance code)",
+  "project": "ml-oncology-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer", "oncology", "machine-learning", "software", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "After M1 (subtyping) and the initial survival baseline work, the harness code serving both task families is likely duplicated or inconsistently structured. The definition-object-first architecture requires that adding a new benchmark is as simple as writing a new definition object — not forking harness code. This refactor ensures both subtyping and survival benchmarks run from their respective definition objects through shared audit, metric, provenance, and model-card/datasheet generation code. The goal is that a new benchmark in M3 (breadth-019) is a definition object, not a harness fork. All M1 benchmark results must still pass CI after the refactor.",
+  "objective": "Refactor the harness so both subtyping and survival benchmark task families run from their respective definition objects through shared code paths: shared leakage-audit orchestration, shared provenance-ledger integration, shared model-card and datasheet generation, and shared metric-reporting output format; ensure all M1 subtyping numbers and M2 survival numbers still reproduce within tolerance after the refactor; confirm the harness is structured so a new benchmark (breadth-019 in M3) is a new definition object with no harness forking.",
+  "acceptanceCriteria": [
+    "Both subtyping and survival benchmark task families run from their definition objects through a shared harness: shared leakage-audit orchestration, shared provenance-ledger integration, shared model-card/datasheet generation, and shared metric-reporting output format",
+    "All M1 subtyping baseline numbers reproduce within tolerance after the refactor (the one-command re-run gate from task 011 passes); all M2 survival baseline numbers reproduce within tolerance",
+    "The harness architecture is documented: adding a new benchmark type is done by writing a new definition object conforming to the shared schema, not by forking harness code",
+    "The refactored harness passes the full leakage-audit suite in CI for both benchmark task families",
+    "No regression in CI: all existing tests (leakage-audit golden fixtures, unit tests, metric library tests, provenance coverage) continue to pass after the refactor",
+    "Technical reviewer and maintainer sign-offs confirm the refactor is architecturally clean and extensible"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A merged PR delivering the refactored task-agnostic harness running both benchmark families from definition objects on shared audit/metric/provenance code — the extensible foundation for M3 breadth tasks.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

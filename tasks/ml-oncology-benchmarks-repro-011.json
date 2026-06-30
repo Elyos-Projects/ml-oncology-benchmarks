@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-repro-011",
+  "title": "One-command reproducibility re-run (pinned env, seeds) reproducing all M1 numbers within tolerance",
+  "project": "ml-oncology-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer", "oncology", "machine-learning", "software", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "Reproducibility is a Definition-of-Shipped criterion: every reported benchmark number must be independently re-runnable. A single command in the pinned container must reproduce every M1 number (subtyping baselines, internal CV and external cohort metrics, optimism gap) within a declared numeric tolerance, accounting for acceptable hardware-level nondeterminism. A CI job must run this re-run gate on every release so drift is detected before it reaches a published claim. This task depends on baselines (009) and model cards/provenance ledger (010).",
+  "objective": "Implement and wire a one-command reproducibility re-run gate that, in the pinned container with deterministic seeds, reproduces every M1 baseline number (internal CV and external cohort metrics, optimism gap per baseline) within the declared tolerance; add a CI job that runs this gate on every release and fails if any number drifts beyond tolerance; declare and commit the per-metric tolerance values.",
+  "acceptanceCriteria": [
+    "A single documented command (e.g. 'make repro' or equivalent) in the pinned container re-runs the full M1 baseline pipeline (preprocessing, training, evaluation on internal CV and external cohort) from scratch and produces a comparison report against the committed reference numbers",
+    "Every M1 number is reproduced within the declared tolerance; the tolerance values (per-metric absolute delta, e.g. absolute balanced accuracy delta <= 0.005) are committed as a configuration artifact and justified in the PR description",
+    "A CI job runs the reproducibility re-run gate on every release (or on a scheduled cadence); the gate fails CI if any number drifts beyond tolerance, triggering investigation before a claim is published",
+    "Seeds for all randomness (model initialisation, CV fold assignment, any stochastic preprocessing) are fixed and committed; the pinned container digest is committed so the environment is bit-for-bit reproducible",
+    "The re-run gate is independent of the original training run (it starts from raw data + committed split hashes, not from cached intermediate artifacts) to ensure genuine reproducibility",
+    "Technical reviewer sign-off confirms the re-run gate is genuinely independent and the tolerance is appropriate"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A merged PR delivering the one-command reproducibility re-run gate with a CI job, declared tolerance values, and confirmation that all M1 baseline numbers are reproduced within tolerance — the mechanically-enforced reproducibility requirement.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

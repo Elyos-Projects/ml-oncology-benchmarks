@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-repo-003",
+  "title": "Monorepo skeleton: pnpm/TS/ESM harness + pinned Python ML container + CI (build/test/lint)",
+  "project": "ml-oncology-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer", "oncology", "machine-learning", "software", "reproducibility"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "The ml-oncology-benchmarks project requires a reproducible, pinned environment to ensure that every benchmark number can be independently reproduced. The tech stack decision is TypeScript/ESM + pnpm for harness orchestration, provenance, and generators (per Elyos conventions) and Python (scikit-learn, scikit-survival/lifelines, pandas, numpy) for the actual ML/statistics inside a pinned container. The repo skeleton must be standing before any audit code, benchmark definitions, or model training can begin. CI (build/test/lint) must be green from day one so every later task inherits a passing baseline.",
+  "objective": "Stand up the monorepo skeleton: initialise pnpm workspaces + TypeScript/ESM configuration, add a pinned Python ML container (scikit-learn, scikit-survival, lifelines, pandas, numpy with lockfiles + container digest for determinism), wire CI (build/test/lint) so it passes on the empty harness, and add placeholder entry points for the harness CLI, provenance ledger, datasheet/model-card generators, and the leakage-audit orchestration layer.",
+  "acceptanceCriteria": [
+    "pnpm workspaces + TypeScript/ESM configuration is in place; pnpm build && pnpm test && pnpm lint all pass on the skeleton",
+    "A pinned Python ML container specification exists (Dockerfile or devcontainer) with exact version pins for scikit-learn, scikit-survival, lifelines, pandas, and numpy; a lockfile or container digest is committed so re-runs are deterministic",
+    "CI pipeline (build/test/lint) is wired and green on the initial skeleton commit; any later commit that breaks CI fails the build",
+    "Placeholder entry points exist for: the harness CLI (TS), the provenance ledger (TS), the datasheet/model-card generators (TS), and the leakage-audit orchestration layer (TS calling Python checks)",
+    "All randomness in any included Python snippet is seeded; the container runs deterministically given the same inputs",
+    "README documents how to enter the pinned environment and run the skeleton CI"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A merged PR delivering the monorepo skeleton with pnpm/TS/ESM harness, pinned Python ML container, green CI, and placeholder entry points — the foundation every subsequent task builds on.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

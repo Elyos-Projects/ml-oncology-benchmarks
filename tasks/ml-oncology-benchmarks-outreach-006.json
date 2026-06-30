@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-outreach-006",
+  "title": "Adopter/steward + expert-reviewer outreach (open >= 1 thread; record decision criteria + deadline)",
+  "project": "ml-oncology-benchmarks",
+  "type": "research",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer", "oncology", "research", "open-science", "reproducibility"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "The Elyos definition of 'shipped' requires a real beneficiary who adopts and uses the benchmark — a benchmark nobody adopts is not a delivered deed. Currently no adopter/steward, domain reviewer, or licence+de-id reviewer is secured (all tasks carry verifiedNeed: false and requestor: TO BE SECURED). This outreach task must begin in M0 so that adoption can be tracked in parallel with the technical build, and so the build-vs-mothball/pivot decision can be applied if no adopter is secured by the dated decision point. Candidate channels include computational-oncology labs, reproducibility/open-science groups, cancer data-commons communities (GDC, cBioPortal, Synapse/DREAM), and ML-benchmark bodies.",
+  "objective": "Research and contact candidate adopters, stewards, domain reviewers, and licence+de-id reviewers for ml-oncology-benchmarks; open at least one documented outreach thread with a named organisation or individual; record the decision criteria (what makes a good adopter/reviewer), the contact(s) approached, the current status of each thread, and a dated decision point (if no adopter is confirmed by this date, apply the build-vs-mothball/pivot rule).",
+  "acceptanceCriteria": [
+    "At least one outreach thread is opened with a named candidate adopter, steward, or expert reviewer (organisation/individual identified, contact initiated, thread documented with date and medium)",
+    "A written record of the decision criteria for a suitable adopter/steward is committed (what the adopter must commit to: using the benchmark, providing feedback, enabling external reproductions)",
+    "A dated decision point is recorded: if no adopter is confirmed by this date the build-vs-mothball/pivot rule is applied and the outcome recorded (hand to teaching/reproducibility venue or mothball to maintenance-only), rather than declaring a deed with no beneficiary",
+    "The outreach document records for each candidate: organisation/individual, role sought (adopter/steward/domain reviewer/licence+de-id reviewer), contact date, medium, current status, and next action",
+    "The document distinguishes the two open reviewer roles that are hard gates: the licence+de-id reviewer (mandatory per dataset, must be filled before M1 pilot review) and the domain reviewer (mandatory per benchmark)",
+    "Committed to the repo as a dated outreach record so progress can be tracked across milestones"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A committed outreach-record document: candidate adopters/stewards/reviewers contacted, decision criteria, thread statuses, and a dated build-vs-mothball/pivot decision point — the M0 starting signal for the adoption track that gates the final deed.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

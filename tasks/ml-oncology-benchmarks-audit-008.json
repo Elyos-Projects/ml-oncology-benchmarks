@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-audit-008",
+  "title": "Full leakage-audit suite (add feature/label-contamination, duplicate-sample, batch/centre-confound checks)",
+  "project": "ml-oncology-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer", "oncology", "machine-learning", "software", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "The audit-004 skeleton covers patient-overlap and preprocessing-isolation checks. The full M1 leakage-audit suite must also detect feature/label contamination (labels derivable from features by construction, near-duplicate feature/label leakage, target encoding across the split), duplicate and near-duplicate sample profiles across splits (a real cross-cohort leakage mode), and batch/centre confounding (model predicting the lab rather than the biology). Each new check must follow the same golden-fixture pattern: a clean case that passes and a leaky case that fails, both committed. This task depends on the skeleton (004) and the subtyping benchmark definition (007) which provides real data structures to test against.",
+  "objective": "Extend the leakage-audit suite with three additional checks: (1) feature/label-contamination check — detect labels derivable from features by construction, near-duplicate feature/label leakage, and target encoding performed across the split; (2) duplicate/near-duplicate sample check — detect duplicated or technically-replicated profiles across split sides using a correlation/fingerprint threshold; (3) batch/centre confounding check — test whether the split or the label is confounded with a detectable batch/centre/platform variable and report the confound, requiring it be addressed or declared. Each check must have golden clean and leaky fixtures committed, and must fail CI on violation.",
+  "acceptanceCriteria": [
+    "Feature/label-contamination check: detects labels derivable from features by construction (e.g. a feature that encodes the subtype label), near-duplicate feature/label leakage, and target encoding performed across the train/test boundary; a deliberately contaminated golden fixture triggers the check and fails CI",
+    "Duplicate/near-duplicate sample check: detects duplicated or technically-replicated sample profiles appearing on both sides of a split using a configurable correlation/fingerprint threshold; a golden near-duplicate fixture triggers the check and fails CI",
+    "Batch/centre confounding check: tests whether the split membership or the label distribution is confounded with a detectable batch/centre/platform variable; reports the confound magnitude and requires it be addressed or explicitly declared in the benchmark definition; a confounded golden fixture triggers the check",
+    "All three new checks follow the golden-fixture pattern: at least one known-clean case per check that passes, and at least one deliberately-leaky/confounded case per check that fails CI; fixtures are committed alongside the suite",
+    "The full suite (all checks from audit-004 plus the three new ones) runs in CI on every push and fails the build on any violation; the suite passes on the subtyping benchmark definition from task 007",
+    "Any check that fails on a real benchmark is added as a non-decreasing regression fixture within one release"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A merged PR delivering the full leakage-audit suite with feature/label-contamination, duplicate-sample, and batch/centre-confound checks, golden fixtures for all checks, and CI integration — the complete audit gate that every M1+ benchmark must pass.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

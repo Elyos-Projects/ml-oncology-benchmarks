@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-fairness-026",
+  "title": "Subgroup/disparity evaluation across aggregate strata (no individual data)",
+  "project": "ml-oncology-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer", "oncology", "machine-learning", "software", "fairness"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Oncology ML benchmarks evaluated only on aggregate metrics can mask systematic performance disparities across demographic or clinical subgroups. Subgroup analysis at the aggregate stratum level (no re-identification, no individual-level data) can surface whether a baseline model performs systematically worse for a subgroup defined by an aggregate covariate (e.g. age band, sex, cancer stage as available in the open/de-identified data). This evaluation uses only aggregate strata present in the already-gated, de-identified benchmark data — no additional individual-level data is collected or linked.",
+  "objective": "Implement subgroup/disparity evaluation across aggregate strata available in the gated benchmark data: for each baseline model, report metric disaggregation by available aggregate strata (e.g. age band, sex, cancer stage if present in the open/de-identified dataset); flag strata with substantially lower performance; ensure the evaluation uses only aggregate strata and never re-identifies or links to individuals; add disparity reporting to the model-card format.",
+  "acceptanceCriteria": [
+    "Subgroup evaluation uses only aggregate strata present in the already-gated, publisher-de-identified benchmark data; no additional individual-level data is collected, linked, or inferred; any stratum with a cell size below a minimum threshold (to prevent re-identification risk) is suppressed and that suppression is documented",
+    "For each baseline model, metrics are disaggregated by available aggregate strata (e.g. age band, sex, cancer stage); strata with substantially lower performance (e.g. more than 10 percentage points below the aggregate metric) are flagged",
+    "Disparity reporting is added to the model-card format: each card includes the aggregate strata evaluated, the per-stratum metrics, and any flagged disparities",
+    "The evaluation code is added to the harness and runs via the shared audit/metric/provenance code paths (no harness forking)",
+    "The evaluation is documented with its limitation: it can surface aggregate disparities but cannot determine their causes without additional domain analysis, and is not a re-identification or individual-level analysis",
+    "Domain reviewer and technical reviewer sign-offs on the subgroup evaluation design and suppression threshold are recorded"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A merged PR adding aggregate-stratum subgroup/disparity evaluation to the harness and model-card format, with suppression of small strata and disparity flagging — extending benchmark honesty to subgroup-level reporting.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

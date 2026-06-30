@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-tutorial-028",
+  "title": "\"How to evaluate oncology ML without leaking\" teaching tutorial",
+  "project": "ml-oncology-benchmarks",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer", "oncology", "machine-learning", "education", "reproducibility"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "One of the project's beneficiary groups is students and newcomers to cancer-data science who rarely encounter explicit instruction on how to split, preprocess, and score oncology ML without leaking. This teaching tutorial is derived from the methodology spec (task 001) and the project's leakage-audit checks, translated into an accessible walkthrough with worked examples. It is not patient-facing and is not medical advice — it is researcher-facing educational material about methodology. Risk tier is low because it is researcher-facing (not patient-facing) and makes no clinical claims.",
+  "objective": "Write a researcher-facing teaching tutorial derived from the methodology spec (001) explaining how to evaluate oncology ML without leaking: patient-grouped splitting, preprocessing isolation, external cohort requirement, censoring-aware survival metrics, the optimism-gap concept, and how to interpret a leakage-audit result; include worked code examples using the project harness; publish CC-BY-4.0.",
+  "acceptanceCriteria": [
+    "The tutorial is researcher-facing (not patient-facing) and makes no clinical claims, medical advice, treatment guidance, or individual prognosis; it is explicitly framed as methodology education for ML researchers and students",
+    "The tutorial covers: patient-grouped splitting (why sample-level splits leak in multi-specimen datasets), preprocessing isolation (what 'fit on training folds only' means and how to verify it), external cohort requirement (why internal CV alone is not sufficient), censoring-aware survival metrics (why plain AUC fails on censored data), the optimism gap (how to compute and interpret it), and how to run the project leakage-audit suite",
+    "Worked code examples using the project harness are included; the examples are executable in the pinned container and are verified to run without errors",
+    "Every methodological claim is cited to the methodology spec (001), the project leakage-audit suite, or a published reference (Kapoor and Narayanan 2023, TRIPOD-AI, MAQC/SEQC, etc.)",
+    "Published CC-BY-4.0; no NC-inherited restriction unless COSMIC/OncoKB sources are referenced in the worked examples (in which case the relevant restriction is noted inline)",
+    "Technical reviewer confirms the worked examples run correctly in the pinned environment; domain reviewer confirms the methodological claims are correct"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A published CC-BY-4.0 researcher-facing teaching tutorial on leakage-aware oncology ML evaluation with worked harness examples, derived from the methodology spec — the project's contribution to lowering the barrier for honest oncology ML evaluation.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

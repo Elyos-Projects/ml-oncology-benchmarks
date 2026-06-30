@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-edu-022",
+  "title": "(Optional) Patient-facing \"what survival/subtyping models can and cannot tell you\" explainer -- education only",
+  "project": "ml-oncology-benchmarks",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer", "oncology", "education", "patient-communication"],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "This is an optional, HIGH-risk task outside the core project scope. Any patient-facing or public-education content in the oncology domain is HIGH risk because of the potential for misinterpretation as clinical or medical advice. This task is blocked on oncologist AND patient-advocate sign-off (both required, both recorded) before it ships. It must carry a prominent 'not medical advice' notice throughout and give no clinical recommendation, treatment guidance, or individual prognosis. It can only be started after the adoption milestone (020) is secured and a named oncologist and patient advocate reviewer have agreed to review it. Every assertion must be cited to an authoritative source.",
+  "objective": "Write a patient-facing education-only explainer (if and only if an oncologist reviewer and a patient advocate reviewer have both agreed to review it) explaining in plain language what survival prediction and molecular subtyping models can and cannot tell us, emphasising the limitations, the irreproducibility problem this project addresses, and the 'not medical advice' framing throughout; every assertion must be cited to a published authoritative source; no clinical recommendation, treatment guidance, or individual prognosis is given.",
+  "acceptanceCriteria": [
+    "BLOCKED: this task does not begin until both an oncologist reviewer and a patient-advocate reviewer have agreed in writing to review and sign off the content; both agreements are recorded before any drafting starts",
+    "The explainer is education only: it explains what survival/subtyping models are, what they can and cannot tell researchers, why reproducibility matters, and explicitly that it gives no medical advice, no clinical recommendation, no treatment guidance, and no individual prognosis",
+    "A prominent 'not medical advice' notice appears at the top and is repeated throughout; the document never advises a patient, carer, or clinician on any treatment, screening, or diagnostic decision",
+    "Every factual assertion is cited to a published authoritative source (peer-reviewed paper, professional guideline, or official health-organisation publication); no unsourced claims",
+    "Both the oncologist reviewer and the patient-advocate reviewer have signed off in writing before the document is published; both sign-offs are recorded in the reviewers ledger",
+    "If either the oncologist or the patient-advocate reviewer is not secured, or if either withholds sign-off, this task is deferred or cancelled; the deferral decision is recorded"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A published patient-facing education-only explainer with 'not medical advice' framing throughout, every assertion cited, and both oncologist and patient-advocate sign-offs recorded — or a recorded deferral decision if either reviewer sign-off is not secured.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-audit-004",
+  "title": "Leakage-audit suite skeleton (patient-overlap + preprocessing-isolation checks) wired into CI with golden pass/fail fixtures",
+  "project": "ml-oncology-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer", "oncology", "machine-learning", "software", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Data leakage is the primary failure mode in oncology ML benchmarks. The leakage-audit suite is the heart of this project: a set of CI tests that fail the build on any detected leakage boundary violation, making honest evaluation the path of least resistance. The skeleton begins with the two most critical checks — patient-overlap (no case ID across splits) and preprocessing-isolation (no test data seen during any fit) — wired into CI with golden fixtures so the suite is proven functional from M0. Later tasks (audit-008, survaudit-014) extend it. This task depends on the methodology spec (001) and repo skeleton (003).",
+  "objective": "Implement the leakage-audit suite skeleton wired into CI: (1) a patient-overlap check that asserts no patient/case ID (or known sample alias) appears in more than one split, including across an internal and external cohort; (2) a preprocessing-isolation check that statically and at-runtime asserts no test data is seen during any fit call for scalers, imputers, feature selectors, PCA, normalization, or batch correction; (3) golden fixtures — known-clean cases that must pass and deliberately-leaky cases that must fail — committed alongside the suite; (4) CI integration so the suite runs on every push and fails the build on any violation.",
+  "acceptanceCriteria": [
+    "Patient-overlap check: asserts no patient/case ID (including known sample aliases) appears in more than one split side, and detects cross-cohort overlap between internal training folds and the declared external cohort; CI fails the build on any violation",
+    "Preprocessing-isolation check: provides static analysis and runtime assertion that no test data is seen during any fit call (scalers, imputers, feature selectors, PCA, normalization, batch correction); a deliberately-leaky fixture must trigger the check",
+    "Golden fixtures are committed: at least one known-clean case per check that must pass, and at least one deliberately-leaky case per check that must fail; the suite verifies both directions in CI",
+    "CI integration: the full suite runs on every push and fails the build on any check violation; the build is green on the golden clean fixtures and red on the leaky fixtures in a separate test target",
+    "Any leakage discovered after this PR is added as a non-decreasing regression case (a new golden leaky fixture) within one release, per the leakage-audit policy",
+    "The audit suite is driven by the TS orchestration layer calling the Python check implementations, consistent with the repo architecture established in task 003"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A merged PR delivering the leakage-audit skeleton with patient-overlap and preprocessing-isolation checks, golden pass/fail fixtures, and CI integration that fails the build on any violation — the automated leakage gate every benchmark must pass.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-survbaselines-015",
+  "title": "Survival baselines (Cox/penalized/RSF) fit-on-train-only + optimism-gap report",
+  "project": "ml-oncology-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer", "oncology", "machine-learning", "software", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "After the survival benchmark definition (012), censoring-aware metric library (013), and temporal leakage check (014) are in place, survival baseline models can be trained. Baseline survival models serve as honest reference points, not state-of-the-art competitors. Standard choices include Cox proportional hazards (with and without penalization, e.g. LASSO/ridge), and a Random Survival Forest (RSF). All preprocessing must be fit on training folds only (enforced by the audit). The optimism gap between internal nested CV and external cohort performance is the primary honesty output.",
+  "objective": "Implement baseline survival models (Cox, penalized Cox with LASSO/ridge, Random Survival Forest) trained fit-on-train-only on the survival benchmark definition (012), scored with censoring-aware metrics (013) on both nested-CV folds and the declared external cohort; report the optimism gap (nested-CV minus external-cohort Harrell/Uno C-index and integrated Brier score) with provenance triples on every number; all numbers must pass the full leakage audit (audit-008 + survaudit-014).",
+  "acceptanceCriteria": [
+    "Baseline survival models implemented: at minimum Cox proportional hazards, penalized Cox (LASSO or ridge regularization), and Random Survival Forest; all trained with preprocessing fit on training folds only, enforced by the leakage-audit suite",
+    "Scored with the censoring-aware metric library (013): Harrell C-index, Uno C-index, time-dependent AUC, and integrated Brier score; naive (uncensored) AUC or accuracy is not reported as a primary metric",
+    "Results reported on both nested-CV folds and the declared external cohort; the optimism gap (nested-CV minus external-cohort metric) is computed and reported per metric per baseline with confidence intervals",
+    "No leakage-audit check (patient-overlap, preprocessing-isolation, feature/label-contamination, duplicate-sample, batch/centre-confound, temporal/lookahead) fails in CI for the survival baseline training pipeline",
+    "Every reported number carries the (code version, data version, split hash) provenance triple",
+    "Domain reviewer and technical reviewer sign-offs on the survival baseline implementation and reported metrics are recorded"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A merged PR delivering survival baseline implementations (Cox, penalized Cox, RSF) with fit-on-train-only preprocessing, censoring-aware metrics on nested CV and external cohort, optimism-gap report, and provenance triples — the first honest survival benchmark result.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

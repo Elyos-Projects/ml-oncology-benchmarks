@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-leaderboard-018",
+  "title": "Provenance-gated leaderboard (every row: external-cohort number + code+data+split provenance)",
+  "project": "ml-oncology-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer", "oncology", "machine-learning", "software", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The leaderboard is the public-facing summary of all accepted benchmark results. Its design choices directly determine whether the project advances or undermines honest benchmarking. Every leaderboard row must show an external-cohort metric (not internal CV) and link to its (code, data, split) provenance triple; rows without provenance or external validation are not listed. This is the provenance-gated leaderboard: it is generated as a projection of the accepted submissions and benchmark definition objects, not hand-maintained. NC-derived entries carry the inherited restriction label.",
+  "objective": "Implement the provenance-gated leaderboard: a generated artifact (from accepted submissions and benchmark definition objects) where every row shows an external-cohort metric, links to the (code, data, split) provenance triple, and carries a re-run-passed marker; rows without provenance or an external-cohort number are not admitted; NC-derived entries carry the non-commercial restriction label; the leaderboard is published CC-BY-4.0 (non-NC rows) or with inherited NC restriction (NC-derived rows).",
+  "acceptanceCriteria": [
+    "Every leaderboard row displays an external-cohort metric (not internal cross-validation performance) and links to the (code version, data version, split hash) provenance triple",
+    "Rows without a provenance triple or without an external-cohort number are not listed; the generator enforces this automatically and a CI test confirms no row violates the requirement",
+    "Each row carries a re-run-passed marker (from the submission-017 re-run gate receipt) indicating the numbers were independently verified to reproduce within tolerance",
+    "NC-derived entries (rows whose data includes COSMIC/OncoKB sources) carry the inherited non-commercial restriction label; the leaderboard is published CC-BY-4.0 for non-NC rows",
+    "The leaderboard is generated as a projection of the accepted submission records and benchmark definition objects, not hand-maintained; re-running the generator from the committed records produces the same leaderboard",
+    "Technical reviewer and domain reviewer sign-offs on the leaderboard format and generator are recorded"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A merged PR delivering the provenance-gated leaderboard generator and the initial leaderboard (seeded with the M1 and M2 baseline results) where every row shows an external-cohort metric, links to provenance, and carries a re-run-passed marker.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}
