@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-baselines-009",
+  "title": "Subtyping baselines (fit-on-train-only) + class-correct metrics + optimism-gap report",
+  "project": "ml-oncology-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer", "oncology", "machine-learning", "software", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The subtyping benchmark (task 007) and full leakage-audit suite (task 008) are the prerequisites for training baseline models. Baselines in this project are not intended to achieve state-of-the-art performance — they exist to make the benchmark honest and to establish a reproducible reference point. All preprocessing must be fit on training folds only, enforced by the leakage-audit suite. Metrics must be class-imbalance-aware. The critical output is the optimism gap: the difference between internal cross-validation and external-cohort performance, reported per benchmark as the project's signature honesty metric.",
+  "objective": "Implement baseline subtyping classifiers trained fit-on-train-only (all preprocessing fit on training folds, enforced by the leakage-audit suite), scored with class-correct metrics (balanced accuracy, macro-F1, AUROC/AUPRC with confidence intervals) on both internal CV folds and the declared external validation cohort, and report the optimism gap (internal-CV minus external-cohort performance) with all numbers carrying the (code version, data version, split hash) provenance triple.",
+  "acceptanceCriteria": [
+    "Baseline classifiers are trained with all preprocessing (scaling, imputation, feature selection, normalization) fit on training folds only; no leakage-audit check fails in CI for the baseline training pipeline",
+    "Metrics reported for subtyping: balanced accuracy, macro-F1, AUROC/AUPRC with confidence intervals; naive (accuracy only, class-imbalance-ignoring) metrics are not used as primary metrics",
+    "Results reported on both internal cross-validation folds and the declared external validation cohort; the optimism gap (internal-CV minus external-cohort metric) is computed and reported per metric per baseline",
+    "Every reported number carries the (code version, data version, split hash) provenance triple, making each result traceable to its computation",
+    "The baseline training and evaluation pipeline is reproducible: the same seeds, pinned environment, and split hashes produce identical numbers",
+    "Domain reviewer and technical reviewer sign-off on the baseline implementation and the reported metrics are recorded"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A merged PR delivering subtyping baseline implementations with fit-on-train-only preprocessing, class-correct metrics on internal CV and external cohort, optimism-gap report, and provenance triples on every number — the first honest benchmark result.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-ops-021",
+  "title": "Ops/maintenance runbook + outcome dashboard + data/licence re-verification cadence + maintenance rotation",
+  "project": "ml-oncology-benchmarks",
+  "type": "maintenance",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer", "oncology", "machine-learning", "maintenance", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "A benchmark that has no ongoing maintenance plan will drift into obsolescence: source licences change, access tiers change, subtype/endpoint definitions are updated in the literature, Python dependencies drift, and reported numbers may no longer be reproducible. The ops runbook documents how the project is maintained post-delivery: the maintenance rotation, the data/licence re-verification cadence (who verifies, on what schedule, what triggers an ad-hoc check), the outcome tracking dashboard (recording external reproductions and uses against the success metrics), and the process for adding regression cases when new leakage is discovered.",
+  "objective": "Write and publish the ops/maintenance runbook: maintenance rotation (who maintains and how they rotate), data/licence re-verification cadence (fixed schedule and ad-hoc triggers for re-checking source access tiers and licences), outcome dashboard (tracking external reproductions, uses, and per-benchmark optimism gaps against success metrics, reviewed each milestone), and the process for adding new leakage regression cases; commit the initial outcome dashboard with the M4 baseline values.",
+  "acceptanceCriteria": [
+    "Maintenance rotation is documented: who maintains the project after adoption, how the rotation works, what the minimum rotation size is (at least 1 active maintainer at all times or triage halts), and how new maintainers are onboarded",
+    "Data/licence re-verification cadence is specified: a fixed schedule (e.g. annual) and a list of ad-hoc triggers (source announces a policy change, a dataset is updated, a source is withdrawn) for re-checking all in-scope dataset access tiers and licences",
+    "Outcome dashboard is committed: tracks external reproductions (target >= 2), external uses (target >= 3), per-benchmark optimism gaps, and adoption status against the project success metrics; reviewed each milestone",
+    "The process for adding new leakage regression cases is documented: when leakage is discovered post-delivery it is added as a non-decreasing regression fixture in the audit suite within one release",
+    "The process for handling stale benchmarks (data source withdrawn, definition outdated) is documented: they become maintenance tasks reviewed by the domain reviewer",
+    "Maintainer and steward sign-offs on the runbook are recorded"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A committed ops/maintenance runbook with maintenance rotation, data/licence re-verification cadence, outcome dashboard, and leakage-regression process — the post-delivery sustainability plan for the project.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

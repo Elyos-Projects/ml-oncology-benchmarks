@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-survmetrics-013",
+  "title": "Censoring-aware metric library (Harrell + Uno C-index, time-dependent AUC, integrated Brier score)",
+  "project": "ml-oncology-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer", "oncology", "machine-learning", "software", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Survival analysis requires censoring-aware metrics that correctly handle right-censored outcomes. Plain AUC applied to a censored binary outcome, or concordance computed without censoring weights, produces inflated and misleading estimates. This task implements the four required censoring-aware metrics from the methodology spec (task 001): Harrell C-index, Uno C-index, time-dependent AUC, and integrated Brier score. Each must be unit-tested against known reference values (e.g. from published papers or reference implementations in lifelines/scikit-survival). Naive uncensored metrics must be rejected by the audit when applied to survival data.",
+  "objective": "Implement and unit-test the censoring-aware metric library required by the methodology spec: Harrell C-index, Uno C-index, time-dependent AUC, and integrated Brier score with correct handling of right-censored outcomes; unit-test each metric against known reference values from a published reference implementation or paper; add an audit check that rejects naive (uncensored) AUC or accuracy when applied to survival-labelled data and fails CI on violation.",
+  "acceptanceCriteria": [
+    "Implements Harrell C-index and Uno C-index with correct handling of right-censoring (censored observations contribute correctly to the concordance calculation per their respective formulations)",
+    "Implements time-dependent AUC for survival data (e.g. cumulative/dynamic AUC at specified time points) with correct censoring handling",
+    "Implements integrated Brier score for right-censored survival data with IPCW (inverse probability of censoring weighting) correction",
+    "Each metric is unit-tested against known reference values derived from a published reference implementation (e.g. lifelines, scikit-survival, or R survival package) or a published benchmark paper; the tests are committed and run in CI",
+    "An audit check is added that detects naive (uncensored) AUC or accuracy being applied to survival-labelled (censored) data and fails CI on violation; a golden leaky fixture demonstrates the check works",
+    "Technical reviewer and domain reviewer confirm the metric implementations are statistically correct"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A merged PR delivering the censoring-aware metric library (Harrell+Uno C-index, time-dependent AUC, integrated Brier score) with unit tests against reference values and an audit check that rejects naive metrics on censored survival data.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

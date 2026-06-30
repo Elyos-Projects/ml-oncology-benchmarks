@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-subtype-007",
+  "title": "Subtyping benchmark definition object + patient-grouped splits + declared external cohort",
+  "project": "ml-oncology-benchmarks",
+  "type": "data",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer", "oncology", "machine-learning", "data", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The first complete benchmark in the project is a molecular subtyping benchmark. Before any baseline model is trained the benchmark must be formally defined as a versioned definition object: the subtype label (cited to literature and confirmed current by the domain reviewer), the feature set and its provenance, the patient-grouped split design with a genuinely external validation cohort from a different study or centre, and a record that all sources passed the gate-002 checklist. This task depends on the methodology spec (001), the gate checklist (002), and the first gated dataset (005). The split-membership files and content hashes are emitted as committed artifacts.",
+  "objective": "Create the versioned subtyping benchmark definition object: specify task type (subtyping), cancer type, sources (each with gate-002 passage confirmed), featureSpec (modality, gene/feature set with provenance), labelSpec (subtype definition with literature citation confirmed by domain reviewer), splitSpec (patient/case-grouped splits, fold scheme, declared external validation cohort identity and independence verification, split hashes), preprocessingSpec (fit-on-train-only transforms), and metricSpec (balanced accuracy, macro-F1, AUROC/AUPRC, calibration); emit split-membership files and content hashes.",
+  "acceptanceCriteria": [
+    "Subtype label definition is cited to current literature and confirmed as current by the domain reviewer; the feature set (modality, gene/feature list) and its provenance are recorded in the definition object",
+    "Splits are patient/case-grouped (no patient appears on both sides of any split boundary); an external validation cohort from a different study or centre (e.g. an independent GEO series) is declared and its independence from the training cohort is verified by the domain reviewer",
+    "Split-membership files (listing opaque case IDs per split) and content hashes are emitted and committed; these are the canonical split artifacts referenced by all downstream tasks",
+    "All sources used have passed the gate-002 checklist (gate artifact committed); provenance (accession, retrieval date, version) is recorded in the definition object",
+    "The definition object is versioned and self-contained: it is the single source of truth from which the leaderboard, model cards, and reports are generated as projections",
+    "Domain reviewer and licence+de-id reviewer sign-offs are recorded alongside the definition object"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A versioned, committed subtyping benchmark definition object with patient-grouped splits, declared external cohort, emitted split-membership files and content hashes, and confirmed gate-002 passage for all sources — the single source of truth for the M1 subtyping benchmark.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

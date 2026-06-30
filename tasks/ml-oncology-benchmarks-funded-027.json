@@ -1,0 +1,34 @@
+{
+  "id": "ml-oncology-benchmarks-funded-027",
+  "title": "Funded-lane large-scale benchmark run under a hard budget cap",
+  "project": "ml-oncology-benchmarks",
+  "type": "code",
+  "lane": "funded",
+  "priority": "low",
+  "domain": ["cancer", "oncology", "machine-learning", "software", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "Some large-scale benchmark computations (e.g. Random Survival Forest with hyperparameter tuning on a large multi-omics dataset, or nested CV with many outer folds on a large expression matrix) may exceed what is feasible in a single donated compute session. This is a funded-lane task for any such oversized benchmark run, subject to a hard per-task escrow budget cap that must never be exceeded. The funded lane requires an API key, a hard fundedBudgetUsd cap, and a cost ledger entry. No funded compute may run without a confirmed budget cap. This task is a placeholder and is only activated if a specific benchmark run is identified as too large for donated compute and a donor budget is confirmed.",
+  "objective": "If and only if a specific large-scale benchmark run is identified as infeasible on donated compute and a donor budget is confirmed: execute the oversized benchmark run in the funded lane under a hard budget cap, with full cost ledger recording; all other project requirements (gate-002 passage, leakage-audit passage, external cohort, provenance triples) apply unchanged.",
+  "acceptanceCriteria": [
+    "This task is only activated when a specific benchmark run is confirmed as infeasible on donated compute and a confirmed donor budget is available; without both conditions this task remains a placeholder and is not started",
+    "The funded run operates under a hard fundedBudgetUsd cap that must never be exceeded; if the run is projected to exceed the cap it is halted and the situation escalated before proceeding",
+    "All cost incurred is recorded in the cost ledger with a public entry (provider, model/compute type, task id, cost in USD, date); no cost is hidden or unrecorded",
+    "All project requirements apply to the funded run identically: gate-002 passage for all data, full leakage-audit suite passing in CI, declared external cohort, provenance triples on every number",
+    "No API key, token, or credential is written to logs, model cards, leaderboard entries, or committed files",
+    "Maintainer sign-off confirms the funded-lane activation decision and the budget cap are recorded before the run starts"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A merged PR delivering the large-scale benchmark run results within the hard budget cap, with a public cost ledger entry, full leakage-audit passage, and provenance triples — or a recorded decision that the task remains a placeholder pending budget confirmation.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT",
+  "fundedBudgetUsd": 50
+}

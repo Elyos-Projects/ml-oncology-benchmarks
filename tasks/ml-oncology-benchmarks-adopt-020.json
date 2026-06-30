@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-adopt-020",
+  "title": "Secure adopter/steward + record verified external reproductions and uses",
+  "project": "ml-oncology-benchmarks",
+  "type": "research",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer", "oncology", "research", "open-science", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "This is the deed task — the Elyos bar is 'delivered, not merged.' A benchmark nobody adopts is not a delivered deed. The adopter/steward must be a real lab, consortium, or reproducibility group that uses or reproduces the benchmark externally. This task flips verifiedNeed from false to true once a concrete adopter is secured and recorded. External reproductions (independent re-runs matching within tolerance) and external uses (citation, merged PR, passing leaderboard submission) must be externally verifiable — self-reported use does not count. If no adopter is secured by the dated decision point (from outreach-006), the build-vs-mothball/pivot rule is applied.",
+  "objective": "Secure a real adopter/steward for the benchmark (a named lab, consortium, or reproducibility group that commits to using or reproducing the benchmark); assign a steward; record at least 2 verified external reproductions (independent re-run matching within tolerance, externally verifiable) and at least 3 verified external uses (citation, merged PR, or passing leaderboard submission); flip verifiedNeed to true once confirmed; apply the build-vs-mothball/pivot rule and record the outcome if no adopter is secured by the dated decision point.",
+  "acceptanceCriteria": [
+    "A real lab, consortium, or reproducibility group is named as the adopter; a steward is assigned; the adoption agreement (what the adopter commits to: using the benchmark, providing feedback, enabling reproductions) is documented and committed",
+    "verifiedNeed flips to true in the project record once the adopter is confirmed; all task files can be updated to reflect the confirmed requestor",
+    "At least 2 verified external reproductions are recorded: each is an independent re-run (not by the project team) that matches the published numbers within the declared tolerance; each is externally verifiable (a published report, a GitHub issue, or a passing re-run gate receipt)",
+    "At least 3 verified external uses are recorded: each is a citation in a paper, a merged PR, or a passing leaderboard submission; self-reported use without external evidence does not count",
+    "If no adopter is secured by the dated decision point (from outreach-006), the build-vs-mothball/pivot rule is applied and the outcome recorded: either hand the benchmark to a teaching/reproducibility venue as a reference deed, or mothball to maintenance-only with a clear rationale",
+    "The steward maintains an ongoing record of adoption events, reproductions, and uses, reviewed each milestone"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A committed adoption record documenting the secured adopter/steward, at least 2 verified external reproductions, and at least 3 verified external uses — or the recorded build-vs-mothball/pivot decision if no adopter is secured by the deadline.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

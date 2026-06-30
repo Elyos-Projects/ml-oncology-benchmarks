@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-modelcards-010",
+  "title": "Model cards + provenance ledger (code+data+split triple per number)",
+  "project": "ml-oncology-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer", "oncology", "machine-learning", "software", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Every baseline model trained in task 009 must have a model card carrying provenance on every reported number. Model cards are projections of the benchmark definition object, not hand-maintained documents. The provenance ledger maps every published number to its (code version, data version, split hash) triple and is enforced by a coverage test — if a number exists without a provenance record the build fails. Model cards must explicitly state the intended use framing: 'research benchmark, not a clinical/diagnostic tool, not medical advice.'",
+  "objective": "Implement the model-card generator (projecting from the benchmark definition object) and the provenance ledger: each model card states intended use ('research benchmark, not a clinical/diagnostic tool'), data sources, metrics on internal CV and external cohort, limitations, and the (code, data, split) provenance triple for every number; the provenance ledger maps every published number to its computation; a coverage test fails the build if any number is not traced to a provenance record.",
+  "acceptanceCriteria": [
+    "Each model card states intended use as 'research benchmark, not a clinical/diagnostic tool, not medical advice'; gives no clinical recommendation, treatment guidance, or individual prognosis",
+    "Each model card records: data sources (with gate-002 passage reference), feature/label specification, split specification (including external cohort identity), metrics on internal CV and external cohort with confidence intervals, optimism gap, known limitations, and the (code version, data version, split hash) provenance triple for every reported number",
+    "A provenance ledger is committed mapping every published number to its computation; a CI coverage test fails the build if any leaderboard or model-card number exists without a provenance record ('no source, no claim' enforced mechanically)",
+    "Model cards are generated as projections of the benchmark definition object, not hand-maintained; the generator is committed and runnable",
+    "NC-derived entries (if any artifacts touch COSMIC/OncoKB sources) carry the inherited non-commercial restriction label in the model card",
+    "Technical reviewer and domain reviewer sign-offs are recorded on the model card format and the provenance ledger coverage test"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A merged PR delivering the model-card generator, model cards for all M1 baselines, the provenance ledger, and a CI coverage test that fails the build if any number lacks a provenance record — the mechanically-enforced 'no source, no claim' system.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

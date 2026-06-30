@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-proteomics-023",
+  "title": "Proteomic subtyping benchmark on open PRIDE/CPTAC data",
+  "project": "ml-oncology-benchmarks",
+  "type": "data",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer", "oncology", "proteomics", "data", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "This is a backlog task for after the harness is stable (after M3). Proteomic subtyping benchmarks using open PRIDE or CPTAC proteogenomics data extend the project beyond transcriptomics/expression. PRIDE datasets are typically CC-BY or CC0 per accession; CPTAC open tier is usable. Each PRIDE accession must have its licence verified individually through the gate-002 checklist. An independent external cohort is required. This task follows the same gate + definition-object + audit + baseline pattern as the M1/M2 benchmarks but with proteomic feature modality.",
+  "objective": "Define and deliver a proteomic subtyping benchmark on open PRIDE or CPTAC open-tier data: triage candidate datasets through the gate-002 checklist (per-accession CC-BY/CC0 licence verified for PRIDE; CPTAC open tier confirmed), create the benchmark definition object with proteomic featureSpec, patient-grouped splits, and a declared independent external cohort; run the full leakage-audit suite; document the datasheet.",
+  "acceptanceCriteria": [
+    "Per-accession CC-BY/CC0 licence is verified and recorded for each PRIDE dataset used; CPTAC open-tier status is confirmed; each source passes the gate-002 checklist with a committed gate artifact",
+    "A benchmark definition object is created for proteomic subtyping with featureSpec specifying the proteomic modality (e.g. mass-spectrometry quantified protein intensities), labelSpec, patient-grouped splits, and a declared independent external cohort from a different study",
+    "The full leakage-audit suite passes in CI for the proteomic benchmark; the batch/centre confound check is especially important given platform differences across proteomic datasets and must be run and its result committed",
+    "A datasheet is published covering the proteomic data composition, collection, processing (sample preparation, instrument type, quantification method), de-identification, licence, and batch/centre/platform structure",
+    "An independent external cohort from a different PRIDE or CPTAC study is declared and its independence is confirmed by the domain reviewer",
+    "Domain reviewer and licence+de-id reviewer sign-offs are recorded"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A committed proteomic subtyping benchmark definition object with per-accession licence gate records, patient-grouped splits with external cohort, full leakage-audit passage in CI, and a datasheet — extending the benchmark portfolio to proteomic modalities.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

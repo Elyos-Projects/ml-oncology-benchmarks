@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-multimodal-024",
+  "title": "Multi-omics (expression + clinical) survival benchmark",
+  "project": "ml-oncology-benchmarks",
+  "type": "data",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer", "oncology", "machine-learning", "data", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "This is a backlog task, only attempted after the harness is stable (after M3 breadth task). Multi-omics benchmarks combining expression and clinical features for survival prediction carry a higher leakage risk than single-modality benchmarks: cross-modality contamination (a clinical variable that encodes the expression subtype label), modality-specific batch effects, and differing sample coverage across modalities can all introduce leakage. This task requires extra leakage-audit attention and is deferred until the single-modality benchmarks and full audit suite are proven stable.",
+  "objective": "Define and deliver a multi-omics (gene expression + de-identified clinical covariates) survival benchmark on open-access/aggregate/de-identified data: gate all sources, handle modality-specific data integration and batch-effect checking, extend the leakage-audit suite with any cross-modality contamination checks needed, define patient-grouped nested CV with a declared external cohort, and document the dataset integration in a datasheet.",
+  "acceptanceCriteria": [
+    "All sources (expression and clinical) pass the gate-002 checklist; individual-level clinical data requiring a DUA is excluded; only open-tier or publisher-de-identified clinical data is used",
+    "A benchmark definition object is created specifying the multi-omics featureSpec (expression modality + clinical covariates, each with provenance), the survival labelSpec with right-censoring definition, patient-grouped nested CV splits, and a declared independent external cohort",
+    "Cross-modality contamination is checked: the leakage-audit suite is extended or confirmed to detect cases where a clinical variable encodes or closely proxies the expression-based subtype label or the survival outcome",
+    "Modality-specific batch and platform effects are checked and declared; the batch/centre confound check is run across both modalities; any confounds are addressed or declared in the benchmark definition",
+    "The full leakage-audit suite (including any new cross-modality checks) passes in CI; datasheets cover each modality separately",
+    "Domain reviewer and licence+de-id reviewer sign-offs are recorded"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A committed multi-omics survival benchmark definition object with gated sources, patient-grouped nested CV splits with external cohort, cross-modality leakage-audit passage in CI, and modality datasheets — extending the portfolio to integrated feature types.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

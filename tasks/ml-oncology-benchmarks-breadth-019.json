@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-breadth-019",
+  "title": "Second cancer type/cohort benchmark added via definition object (gate + audit + external cohort)",
+  "project": "ml-oncology-benchmarks",
+  "type": "data",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer", "oncology", "machine-learning", "data", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "The M3 goal is to have at least two benchmarks across at least two cancer types or cohorts, demonstrating that the harness is genuinely task-agnostic (not just a two-file system). The second benchmark is added entirely via a definition object through the refactored harness (task 016), with no harness forking. The candidate cancer type or cohort is a domain-reviewer decision — it must be open-access/aggregate/de-identified, pass the gate-002 checklist, have a declared independent external cohort, and pass the full leakage-audit suite in CI. This task covers the definition-object + gate + audit cycle; baseline modelling follows the same pattern as 009 or 015.",
+  "objective": "Add a second benchmark (a different cancer type or cohort) to the harness via a new definition object: triage the dataset through the gate-002 checklist (open/aggregate/de-id, licence verified), create the benchmark definition object (following the architecture of task 007 or 012), run the full leakage-audit suite, and confirm the benchmark passes all checks in CI; no harness forking is required.",
+  "acceptanceCriteria": [
+    "A second benchmark is defined for a cancer type or cohort distinct from the M1 subtyping and M2 survival benchmarks; it is added entirely via a new definition object through the refactored harness (016) with no harness forking",
+    "All sources pass the gate-002 checklist with committed gate artifacts (open/aggregate/de-id, licence verified, de-identification publisher-documented)",
+    "The benchmark definition object specifies a declared independent external cohort from a different study or centre; patient-grouped splits are used; split-membership files and content hashes are emitted and committed",
+    "The full leakage-audit suite (all checks from audit-004, audit-008, and any applicable survaudit-014 checks) passes in CI for the new benchmark",
+    "Domain reviewer and licence+de-id reviewer sign-offs are recorded alongside the new benchmark definition object",
+    "The new benchmark is listed in the provenance-gated leaderboard (018) with its external-cohort metric and provenance triple after baseline results are available"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A committed second benchmark definition object for a new cancer type or cohort, with gate-002 passage, patient-grouped splits, declared external cohort, and full leakage-audit suite passing in CI — demonstrating the harness generalises beyond the first two benchmarks.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

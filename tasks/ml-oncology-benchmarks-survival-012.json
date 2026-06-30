@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-survival-012",
+  "title": "Survival benchmark definition (right-censored endpoint, nested CV, external cohort)",
+  "project": "ml-oncology-benchmarks",
+  "type": "data",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer", "oncology", "machine-learning", "data", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The second benchmark family is survival prediction: overall or progression-free survival with right-censoring. Survival benchmarks have additional leakage risks beyond subtyping — temporal/lookahead leakage (post-baseline or outcome-derived features used as predictors), incorrect censoring handling, and naive metrics that ignore censoring (plain AUC applied to censored outcomes). The benchmark definition must specify the right-censored endpoint and censoring definition, use nested CV to avoid optimistic performance estimates, and declare an independent external cohort. All sources must pass the gate-002 checklist; only aggregate or de-identified individual-level data is in scope.",
+  "objective": "Create the versioned survival benchmark definition object: specify task type (survival), cancer type, endpoint (OS or PFS) with right-censoring definition cited and confirmed by the domain reviewer, sources (each with gate-002 passage confirmed, aggregate-only where individual-level would be controlled), featureSpec, splitSpec (patient-grouped nested CV with declared independent external cohort, split hashes), preprocessingSpec (fit-on-train-only), and metricSpec (Harrell C-index, Uno C-index, time-dependent AUC, integrated Brier score); emit split-membership files and content hashes.",
+  "acceptanceCriteria": [
+    "Endpoint (OS or PFS) and censoring definition are cited to literature and confirmed by the domain reviewer; the censoring handling is explicitly specified (right-censoring, no informative censoring assumed without justification)",
+    "Splits are patient/case-grouped with nested cross-validation; a declared independent external cohort from a different study or centre is confirmed as genuinely independent by the domain reviewer",
+    "Sources are aggregate-only or publisher-documented de-identified; individual-level survival data requiring a DUA is excluded; all sources have passed the gate-002 checklist with committed gate artifacts",
+    "The definition object specifies the metric suite: Harrell C-index, Uno C-index, time-dependent AUC, and integrated Brier score; naive (uncensored) accuracy or AUC is explicitly excluded as a primary metric",
+    "Split-membership files and content hashes are emitted and committed; the definition object is versioned and self-contained",
+    "Domain reviewer and licence+de-id reviewer sign-offs are recorded alongside the definition object"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A versioned, committed survival benchmark definition object with right-censored endpoint specification, patient-grouped nested CV splits, declared external cohort, emitted split-membership files and content hashes, and confirmed gate-002 passage for all sources.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

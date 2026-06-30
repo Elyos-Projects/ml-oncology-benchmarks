@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-survaudit-014",
+  "title": "Temporal/lookahead leakage check (no post-baseline/outcome-derived predictors) added to audit",
+  "project": "ml-oncology-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer", "oncology", "machine-learning", "software", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Survival benchmarks have a specific leakage mode not present in subtyping: temporal/lookahead leakage — using post-baseline information (measurements taken after the study baseline) or features derived from the outcome itself (e.g. treatment response used to predict survival) as predictors. This is a known source of inflated survival model performance in published studies. This check extends the leakage-audit suite (audit-008) with a temporal/lookahead check for the survival benchmark (survival-012). It follows the same golden-fixture pattern: a deliberately-leaky fixture (containing a post-baseline feature) must trigger the check and fail CI.",
+  "objective": "Add the temporal/lookahead leakage check to the leakage-audit suite: flag any predictor feature derived from post-baseline information or from the outcome variable itself; fail CI on any violation; commit a golden leaky fixture demonstrating the check works (a feature set containing a known post-baseline or outcome-derived variable) and a clean fixture that passes.",
+  "acceptanceCriteria": [
+    "The temporal/lookahead check flags any predictor feature that is derived from post-baseline information (measurements taken after the survival study baseline date) and fails CI on detection",
+    "The check flags any predictor feature that is derived from or encodes the outcome variable (e.g. a treatment response variable used to predict the survival outcome that treatment was meant to improve)",
+    "A golden leaky fixture is committed: a feature set containing at least one known post-baseline or outcome-derived feature that triggers the check and fails CI",
+    "A golden clean fixture is committed: a feature set with only baseline-time predictors that passes the check",
+    "The temporal check is integrated into the full audit suite (audit-008 extended) and runs in CI on every push for any survival benchmark",
+    "Technical reviewer and domain reviewer confirm the check correctly captures the temporal leakage pattern"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A merged PR adding the temporal/lookahead leakage check to the audit suite with golden clean and leaky fixtures and CI integration — closing the survival-specific leakage vector.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

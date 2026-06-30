@@ -1,0 +1,33 @@
+{
+  "id": "ml-oncology-benchmarks-gate-002",
+  "title": "Licence + access-tier + de-identification gate checklist (open/aggregate/de-id only; controlled excluded)",
+  "project": "ml-oncology-benchmarks",
+  "type": "design-spec",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer", "oncology", "data", "reproducibility", "open-data"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Every dataset used in ml-oncology-benchmarks must pass an objective gate before any modelling: its access tier must be open, aggregate, or publisher-documented de-identified (controlled-access data such as dbGaP, EGA, individual-level biobanks are excluded by hard rule), its licence must permit research reuse and redistribution of derived metrics/splits/metadata, and its de-identification status must be publisher-documented. Without a standardised, auditable checklist this gate cannot be applied consistently across datasets or confirmed by the licence+de-id reviewer. The gate is a hard blocking dependency for every downstream benchmark task. No adopter or licence/de-id reviewer is yet secured.",
+  "objective": "Design and publish the per-source licence + access-tier + de-identification gate checklist: the structured record format each dataset must complete (accessTier, licenceId, licenceUrl, permitsResearchReuse, permitsDerivedRedistribution, deidentification status, attribution string, licence snapshot with committed copy + SHA-256 + Wayback URL) and the decision rule (controlled or identifiable = EXCLUDE; missing field = EXCLUDE; never default-allow), covering the candidate source classifications (TCGA open tier, GEO, CPTAC open, PRIDE, aggregate SEER/GLOBOCAN, COSMIC/OncoKB NC, and the default FLAG/EXCLUDE path for anything else).",
+  "acceptanceCriteria": [
+    "Records per source: accessTier (open/aggregate/de-identified — controlled implies EXCLUDE), licenceId and licenceUrl with cited clause, permitsResearchReuse, permitsDerivedRedistribution for derived metrics/splits/metadata, deidentification as publisher-documented, attribution string, and a licence snapshot (committed copy + SHA-256 + Wayback URL)",
+    "Encodes the source classifications: TCGA/GDC open tier, GEO, CPTAC open, PRIDE (CC-BY/CC0) are acceptable; controlled GDC tiers, dbGaP, EGA, individual-level SEER/biobanks are EXCLUDED; COSMIC/OncoKB are restricted (NC) and usable only under NC terms with inherited restriction labelled on all derived artifacts",
+    "Any missing field, unclear licence, or controlled/identifiable signal results in FLAG/EXCLUDE — never default-allow; the decision rule is encoded in the checklist as an explicit pass/fail, not reviewer discretion",
+    "The gate record format is machine-readable (structured fields) and can be committed alongside each dataset's datasheet as a verifiable artifact",
+    "Licence+de-id reviewer sign-off slot is part of the record, with a field for the reviewer name and date; no benchmark uses a dataset without a completed, signed gate record",
+    "Reviewed and signed off by the licence+de-id reviewer (recorded in the reviewers ledger)"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A published gate-checklist document and machine-readable gate-record schema defining the per-source licence + access-tier + de-identification decision record and the pass/fail rule — the hard blocking gate applied to every dataset before it enters a benchmark.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}
